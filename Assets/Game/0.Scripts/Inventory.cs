@@ -7,6 +7,11 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
     [SerializeField] private Transform parent;
+
+    [SerializeField] private Image invenimage;
+ 
+    [SerializeField] private ScriptableObject itemdata;
+     
     public int inX { get; set; }
     public int inY { get; set; }
     // Start is called before the first frame update
@@ -14,7 +19,7 @@ public class Inventory : MonoBehaviour
     {
         inX = 4;
         inY = 10;
-        OnInventory();
+        Inven();      
     }
 
     // Update is called once per frame
@@ -23,11 +28,13 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void OnInventory()
+    public void Inven()  
     {
         for (int i = 0; i < inX * inY; i++)
         {
             Instantiate(prefab, parent);
         }
     }
+
+    
 }
