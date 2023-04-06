@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 에셋에 메뉴 추가 해주는 것
 [CreateAssetMenu(fileName = "itemData", menuName = "Scriptable/ItemData")]
 public class ItemData : ScriptableObject
 {
