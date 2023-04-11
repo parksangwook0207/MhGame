@@ -50,10 +50,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // 테스트용 : 아이템 추가
-
     private void AddItem()
     {
+        if (lastIndex > (inX * inY) - 1)
+        {
+            return;
+        }
         // 내가 들고 있는 아이템 인벤토리에 셋팅
         int itemIdx = Random.Range(0, itemData.Length);
         ItemData Id = itemData[itemIdx];
@@ -61,6 +63,7 @@ public class Inventory : MonoBehaviour
         if (ItemAddCheck(Id.name) == true)
         {
             invenItemList[lastIndex].SetData(Id);
+            lastIndex++;
         }
         else
         {
@@ -97,13 +100,4 @@ public class Inventory : MonoBehaviour
         }
         return index;
     }
-
-
-
-
-
-
-
-
-
 }

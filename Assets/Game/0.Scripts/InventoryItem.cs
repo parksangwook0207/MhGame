@@ -43,7 +43,7 @@ public class InventoryItem : MonoBehaviour
     public void SetCount(int count, bool isAdd)
     {
         int temp = isAdd == true ? Count += count : Count -= count;
-        cntTxt.text = Count.ToString();
+        cntTxt.text = Count.ToString();       
     }
     /// <summary>
     /// 아이템 이미지 변경
@@ -62,5 +62,7 @@ public class InventoryItem : MonoBehaviour
         ItemName = iData.Name;
     }
     */
-   
+
+    
+
 }
