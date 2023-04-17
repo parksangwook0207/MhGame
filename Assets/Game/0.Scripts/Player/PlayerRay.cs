@@ -18,7 +18,7 @@ public class PlayerRay : MonoBehaviour
 
         Ray ray = new Ray(rayPos, transform.forward);
         RaycastHit hit;
-       
+
         Debug.DrawRay(transform.position, transform.forward * 1f, Color.red);
 
         UI.Instance?.ShowInputUI(false);
@@ -30,6 +30,11 @@ public class PlayerRay : MonoBehaviour
                 UI.Instance?.ShowInputUI(true);
                 Debug.Log(hit.collider.name);
             }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
             
         }
 
