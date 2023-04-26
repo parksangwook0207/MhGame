@@ -43,6 +43,10 @@ public class Enemy : MonoBehaviour
 
                 int rand = Random.Range(1, 3);
                 data.animator.SetTrigger($"Attack{rand}");
+                if (data.target.GetComponent<Fence>())
+                {
+                    data.target.GetComponent<Fence>().Hit(10);
+                }
                 // 데미지 제공
                 Invoke("FindTarget", 0.5f);
             }

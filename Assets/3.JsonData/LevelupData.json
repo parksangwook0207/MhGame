@@ -1,0 +1,38 @@
+{
+  // 제이슨
+  // 배열형태
+  // 제이슨 할 떄는 무조건 클래스
+  "turret": [
+    {
+      "att": 5,
+      "hp": 50,
+      "attdis": 15,
+      "attdelay": 1.0
+
+    },
+    {
+      "att": 10,
+      "hp": 100,
+      "attdis": 18,
+      "attdelay": 0.8
+    },
+    {
+      "att": 15,
+      "hp": 150,
+      "attdis": 23,
+      "attdelay": 0.6
+    },
+    {
+      "att": 20,
+      "hp": 200,
+      "attdis": 25,
+      "attdelay": 0.4
+    },
+    {
+      "att": 30,
+      "hp": 300,
+      "attdis": 30,
+      "attdelay": 0.2
+    }
+  ]
+}
