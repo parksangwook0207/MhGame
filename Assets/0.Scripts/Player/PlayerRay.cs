@@ -11,33 +11,12 @@ public class PlayerRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #region RayCast Simple
-        /*
-        Vector3 rayPos = transform.position;
-        rayPos.y += 0.3f;
 
-        //Ray ray = new Ray(rayPos, transform.forward * 1f);
-        RaycastHit hit;
-
-        Debug.DrawRay(rayPos, transform.forward * 1f, Color.red);
-
-        UI.Instance?.ShowInputUI(false);
-
-        if (Physics.Raycast(rayPos, transform.forward, out hit, 2f))
-        {
-            if (hit.collider.CompareTag("hunting"))
-            {
-                UI.Instance?.ShowInputUI(true);
-                Debug.Log(hit.transform.name);
-            }
-        }
-        */
-        #endregion
 
         // 채집 가능
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if(!isPress)
+            if (!isPress)
             {
                 isPress = true;
                 pressTime = 0;
@@ -50,7 +29,7 @@ public class PlayerRay : MonoBehaviour
             pressTime = 0;
         }
 
-        if(isPress)
+        if (isPress)
         {
             if (UI.Instance.inputUI.activeInHierarchy)
             {
@@ -64,25 +43,9 @@ public class PlayerRay : MonoBehaviour
                     {
 
                         case "hunting":
-                            
-                            if (other.GetComponent<Tree>() != null)
-                            {
-                                // 트리가  null 이 아닐 때 트리를 숨긴다.
-                                other.GetComponent<Tree>().HideTree();
-                            }
-                            else if(other.GetComponent<Stick>() != null)
-                            {
-                                other.GetComponent<Stick>().Hide();
-                            }
-                            else if (other.GetComponent<Stone>() != null)
-                            {
-                                other.GetComponent<Stone>().Hide();
-                            }
-                            else if (other.GetComponent<Mushroom>() != null)
-                            {
-                                other.GetComponent<Mushroom>().Hide();
-                            }
+                            Huting();
                             break;
+
                     }
                     isPress = false;
                 }
@@ -98,6 +61,9 @@ public class PlayerRay : MonoBehaviour
                 UI.Instance?.ShowInputUI(true);
                 this.other = other;
                 break;
+            case "buildx":
+                BuildX();
+                break;
         }
     }
 
@@ -105,5 +71,35 @@ public class PlayerRay : MonoBehaviour
     {
         UI.Instance?.ShowInputUI(false);
         this.other = null;
+    }
+
+    void Huting()
+    {
+        if (other.GetComponent<Tree>() != null)
+        {
+            // 트리가  null 이 아닐 때 트리를 숨긴다.
+            other.GetComponent<Tree>().HideTree();
+        }
+        else if (other.GetComponent<Stick>() != null)
+        {
+            other.GetComponent<Stick>().Hide();
+        }
+        else if (other.GetComponent<Stone>() != null)
+        {
+            other.GetComponent<Stone>().Hide();
+        }
+        else if (other.GetComponent<Mushroom>() != null)
+        {
+            other.GetComponent<Mushroom>().Hide();
+        }
+        else if (other.GetComponent<FenceObj>() != null)
+        {
+            other.GetComponent<FenceObj>().Build();
+        }
+    }
+
+    void BuildX()
+    {
+
     }
 }

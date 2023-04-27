@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
         public State state;
         public Transform target;
         public Animator animator;
+        public float HP { get; set; }
     }
 
     protected Data data = new Data();
@@ -89,5 +90,17 @@ public class Enemy : MonoBehaviour
         }
 
         data.target = obj.transform;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<TurretBullet>())
+        {
+            data.HP -= other.GetComponent<TurretBullet>().Dmg;
+            if (data.HP <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        other.GetComponent<TurretBullet>().Disable();
     }
 }

@@ -12,6 +12,8 @@ public class Turret : MonoBehaviour
     }
     [SerializeField] private Transform parent;
     [SerializeField] private Transform tempParent;
+    [SerializeField] private TurretBullet tb;
+    
 
     [SerializeField] List<TurretBullet> listTB = new List<TurretBullet>();
     public Queue<TurretBullet> qTb = new Queue<TurretBullet>();
@@ -42,13 +44,11 @@ public class Turret : MonoBehaviour
         TurretBullet b;
         if (qTb.Count != 0)
         {
-            b = qTb.Dequeue();
-        }
-        else
-        {
             b = Instantiate(tb, tempParent);
             qTb.Enqueue(b);
         }
+
+        b = qTb.Dequeue();
         b.transform.SetParent(parent);
         b.Dmg = JsonData.Instance.tData.turret[level - 1].att;
         b.SetTurret(this);

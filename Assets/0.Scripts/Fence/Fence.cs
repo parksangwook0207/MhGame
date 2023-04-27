@@ -15,4 +15,17 @@ public class Fence : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void Show()
+    {
+        GetComponent<MeshCollider>().enabled = true;
+        GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void Hide()
+    {
+        GetComponent<MeshCollider>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
 }
