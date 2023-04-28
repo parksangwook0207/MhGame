@@ -88,7 +88,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private int ItemFindIndex(string name)
     {
-        int index = 0;
+        int index = -1;
         for (int i = 0; i < invenItemList.Count; i++)
         {
             if (invenItemList[i].ItemName == name)
@@ -98,6 +98,21 @@ public class Inventory : MonoBehaviour
             }
         }
         return index;
+    }
+
+    public bool DeleteItem(string name, int count)
+    {
+        int idx = ItemFindIndex(name);
+
+        if (idx != -1)
+        {
+            if (invenItemList[idx].Count >= count)
+            {
+                invenItemList[idx].SetCount(count,false);
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>

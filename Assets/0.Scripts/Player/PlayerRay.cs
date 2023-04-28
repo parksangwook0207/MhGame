@@ -35,7 +35,9 @@ public class PlayerRay : MonoBehaviour
             {
                 pressTime += Time.deltaTime;
                 UI.Instance.InputUIFillAmount(pressTime, 3f);
-                if (pressTime > 3f)
+
+                
+                if (pressTime > 1f)
                 {
                     pressTime = 0;
                     // 게임 오브젝트 태그 접근
@@ -100,6 +102,17 @@ public class PlayerRay : MonoBehaviour
 
     void BuildX()
     {
-
+        if (other.GetComponent<FenceObj>() != null)
+        {
+            FenceObj fObj = other.GetComponent<FenceObj>();
+            if (GameManager.inventory.DeleteItem(fObj.needItemName, fObj.needCount))
+            {
+                fObj.Build();
+            }
+           else
+            {
+                UI.Instance.ToastPopup($"{fObj.needItemName}{fObj.needCount}개가 필요합니다.");
+            }
+        }
     }
 }

@@ -8,12 +8,26 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private Transform parent;
 
     [SerializeField] private BoxCollider spawnBox;
+    [SerializeField] private Sun sun;
 
+    int spawnCnt = 0;
     int spawnMax = 10;
+
+    bool isSpawn = false;
 
     private void Start()
     {
-        StartCoroutine("Spawn");
+        
+    }
+
+    private void Update()
+    {
+        float x = sun.transform.eulerAngles.x;
+        if (!isSpawn &&( x > 55 && x < 60))
+        {
+            isSpawn = true;
+            StartCoroutine("Spawn");
+        }
     }
 
     public IEnumerator Spawn()
@@ -22,8 +36,9 @@ public class EnemySpawn : MonoBehaviour
         {
             Enemy e = Instantiate(enemies[0], parent);
             e.transform.localPosition = RandomPosition();
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
         }
+        isSpawn = false;
     }
 
     Vector3 RandomPosition()

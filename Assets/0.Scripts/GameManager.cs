@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
         checkCamera = FindObjectOfType<CheckCamera>();
         player = FindObjectOfType<MovementInput>();
         inventory = FindObjectOfType<Inventory>();
+
+        Cursor.visible = false;
     }
 
     void Update()

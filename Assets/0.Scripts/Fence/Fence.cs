@@ -12,20 +12,19 @@ public class Fence : MonoBehaviour
 
         if (HP <= 0)
         {
-            gameObject.SetActive(false);
+            Hide();
+            transform.parent.GetComponent<FenceObj>().Show();
         }
     }
 
     public void Show()
     {
-        GetComponent<MeshCollider>().enabled = true;
-        GetComponent<MeshRenderer>().enabled = true;
+        gameObject.SetActive(true);
     }
 
     public void Hide()
     {
-        GetComponent<MeshCollider>().enabled = false;
-        GetComponent<MeshRenderer>().enabled = false;
-        transform.GetChild(0).gameObject.SetActive(true);
+        
+        gameObject.SetActive(false);
     }
 }

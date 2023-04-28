@@ -4,21 +4,33 @@ using UnityEngine;
 
 public class FenceObj : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public int needCount = 2;
+    public string needItemName = "Åë³ª¹«";
 
     public void Build()
     {
-        transform.parent.GetComponent<Fence>().Show();
-        gameObject.SetActive(false);
+        Hide();
     }
+
+    public void Show()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<MeshCollider>().enabled = true;
+
+        transform.GetChild(0).GetComponent<Fence>().Hide();
+    }
+
+    public void Hide()
+    {
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<MeshCollider>().enabled = false;
+
+        transform.GetChild(0).GetComponent<Fence>().Show();
+        
+    }
+
+
+     
+
+    
 }
