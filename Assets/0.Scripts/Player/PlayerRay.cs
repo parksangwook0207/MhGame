@@ -36,7 +36,7 @@ public class PlayerRay : MonoBehaviour
                 pressTime += Time.deltaTime;
                 UI.Instance.InputUIFillAmount(pressTime, 3f);
 
-                
+
                 if (pressTime > 1f)
                 {
                     pressTime = 0;
@@ -46,6 +46,12 @@ public class PlayerRay : MonoBehaviour
 
                         case "hunting":
                             Huting();
+                            break;
+                        case "bulidx":
+                            BuildX();
+                            break;
+                        case "build":
+                            Fence();
                             break;
 
                     }
@@ -60,11 +66,10 @@ public class PlayerRay : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "hunting":
+            case "build":
+            case "buildx":
                 UI.Instance?.ShowInputUI(true);
                 this.other = other;
-                break;
-            case "buildx":
-                BuildX();
                 break;
         }
     }
@@ -109,10 +114,20 @@ public class PlayerRay : MonoBehaviour
             {
                 fObj.Build();
             }
-           else
+            else
             {
                 UI.Instance.ToastPopup($"{fObj.needItemName}{fObj.needCount}개가 필요합니다.");
             }
+        }
+    }
+
+    void Fence()
+    {
+        if (other.GetComponent<Fence>() != null)
+        {
+            Fence f = other.GetComponent<Fence>();
+            f.Level = 1;
+            
         }
     }
 }

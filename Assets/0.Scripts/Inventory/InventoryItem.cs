@@ -24,7 +24,7 @@ public class InventoryItem : MonoBehaviour
     /// 데이터 변경
     /// </summary>
     /// <param name="data"></param>
-    public void SetData(ItemData data)
+    public void SetData(ItemData data, int count)
     {
         iData = data;
         SetCount(1, true);

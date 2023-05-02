@@ -6,6 +6,7 @@ using UnityEngine;
 public class FenceMa : MonoBehaviour
 {
     [SerializeField] FenceObj[] fences;
+    [SerializeField] public Mesh[] meshs;
     // Start is called before the first frame update
     void Start()
     {

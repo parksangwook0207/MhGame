@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
         // 아이템을 새로 만들어야 할떄
         if (ItemAddCheck(id.Name) == true)
         {
-            invenItemList[lastIndex].SetData(id);
+            invenItemList[lastIndex].SetData(id,count);
             lastIndex++;
 
             // <size=50><b><color=#f0aa00> </color></b></size> html 코드 
@@ -64,9 +64,10 @@ public class Inventory : MonoBehaviour
         else
         {
             int idx = ItemFindIndex(id.Name);
-            invenItemList[idx].SetCount(1, true);
+            int count = Random.Range(2, 6);
+            invenItemList[idx].SetCount(count, true);
 
-            UI.Instance.ToastPopup($"<color=#f0aa00>{id.Name}</color> 을(를) 1개를 획득하였습니다.");
+            UI.Instance.ToastPopup($"<color=#f0aa00>{id.Name}</color> 을(를) {count}개를 획득하였습니다.");
         }
     }
 
