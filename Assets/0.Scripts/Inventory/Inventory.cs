@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
         // 아이템을 새로 만들어야 할떄
         if (ItemAddCheck(id.Name) == true)
         {
-            invenItemList[lastIndex].SetData(id,count);
+            //invenItemList[lastIndex].SetData(id.C); 
             lastIndex++;
 
             // <size=50><b><color=#f0aa00> </color></b></size> html 코드 

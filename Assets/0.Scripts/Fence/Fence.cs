@@ -23,8 +23,8 @@ public class Fence : MonoBehaviour
                 
                 if (GameManager.inventory.DeleteItem("통나무", needUpgradeCount))
                 {
-                    if (level < FenceMa.Instace.meshs.Length)
-                    GetComponent<MeshFilter>().mesh = FenceMa.Instance.meshs[level];
+                   // if (level < FenceMa.Instace.meshs.Length)
+                    //GetComponent<MeshFilter>().mesh = FenceMa.Instance.meshs[level];
                     HP = HP + (maxHP * level);
                     needUpgradeCount = (level + 1) + (transform.parent.GetComponent<FenceObj>().needCount * level); 
                     UI.Instance.ToastPopup($"{level + 1}업그레이드 완료");
