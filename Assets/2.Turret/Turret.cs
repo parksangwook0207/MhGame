@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    // ем╥©
     enum State
     {
         idle,

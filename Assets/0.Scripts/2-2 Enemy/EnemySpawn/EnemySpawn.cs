@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
+    // 적 스폰 스크립트
     [SerializeField] private Enemy[] enemies;
     [SerializeField] private Transform parent;
 
@@ -22,6 +23,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void Update()
     {
+        // 태양(라이트) 각도에 따라 생성
         float x = sun.transform.eulerAngles.x;
         if (!isSpawn &&( x > 55 && x < 60))
         {
@@ -41,6 +43,7 @@ public class EnemySpawn : MonoBehaviour
         isSpawn = false;
     }
 
+    // 스폰포탈에서 스폰되는 위치가 랜덤으로 생성
     Vector3 RandomPosition()
     {
         Vector3 originPos = spawnBox.transform.localPosition;
